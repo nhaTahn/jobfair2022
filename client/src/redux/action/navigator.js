@@ -1,3 +1,0 @@
-export const NAVIGATOR_TYPES = {
-  CHOOSE_TAB: 'CHOOSE_TAB',
-}
