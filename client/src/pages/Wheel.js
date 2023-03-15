@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import TitleBar from "../components/TitleBar";
@@ -14,12 +14,9 @@ const Wheel = () => {
 
   const password = localStorage.getItem('password');
 
-  if (password !== 'nh2') {
-    return <></>
-  }
 
-  return(
-    <Grid container 
+  return (
+    <Grid container
       direction='column'
       justifyContent='center'
       alignItems='center'
@@ -29,12 +26,12 @@ const Wheel = () => {
       }}
     >
       <Grid item>
-        <TitleBar 
+        <TitleBar
           circleColor="#FFA903"
           title="QUAY SỐ TRÚNG THƯỞNG"
           type="wheel"
         />
-      </Grid>  
+      </Grid>
       <Grid item>
         <SpinWheel />
       </Grid>
