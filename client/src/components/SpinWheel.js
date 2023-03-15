@@ -7,7 +7,7 @@ import { getDataAPI, postDataAPI } from '../utils/fetchData'
 import { STUDENT_TYPES, deleteWheelStudent } from '../redux/action/student'
 
 const prize = [
-  { type: 'S', color: '#006699' },
+  { type: 'S', color: '#95BDFF' },
   { type: '1', color: '#FFB404' },
   { type: '2', color: '#A7A7AD' },
   { type: '3', color: '#824A02' },
@@ -159,7 +159,7 @@ const SpinWheel = (props) => {
             >
               <Button
                 content="Bắt đầu"
-                bgColor="#4A9456"
+                bgColor="#F7C8E0"
                 color="#FFFFFF"
                 width="100px"
                 onClick={start}
@@ -198,7 +198,7 @@ const SpinWheel = (props) => {
                       },
                       textAlign: 'center',
                       color: `${
-                        key === joinList.length - 1 ? '#006699' : '#000000'
+                        key === joinList.length - 1 ? '#95BDFF' : '#000000'
                       }`,
                     }}
                   >
@@ -230,7 +230,7 @@ const SpinWheel = (props) => {
                       },
                       textAlign: 'center',
                       color: `${
-                        key === joinList.length - 5 ? '#006699' : '#000000'
+                        key === joinList.length - 5 ? '#95BDFF' : '#000000'
                       }`,
                     }}
                   >
@@ -262,7 +262,7 @@ const SpinWheel = (props) => {
                       },
                       textAlign: 'center',
                       color: `${
-                        key === joinList.length - 9 ? '#006699' : '#000000'
+                        key === joinList.length - 9 ? '#95BDFF' : '#000000'
                       }`,
                     }}
                   >

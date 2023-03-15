@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { STUDENT_TYPES } from '../redux/action/student'
 import { initLiveStudent } from '../redux/action/student'
 import { getDataAPI } from '../utils/fetchData'
+import { DARK_BLUE, isOrganizer, stringName } from '../utils'
 
 const Statistic = (props) => {
   const [curTime, setCurTime] = useState(new Date())
@@ -52,6 +53,7 @@ const Statistic = (props) => {
         <Grid container spacing={1.3} direction="column">
           <Grid item>
             <Typography
+              align="center"
               sx={{
                 fontSize: {
                   md: '25px',
@@ -74,14 +76,10 @@ const Statistic = (props) => {
                           fontSize: {
                             md: '20px',
                           },
-                          color: `${key === 0 ? '#006699' : '#000000'}`,
+                          color: `${key === 0 ? '#95BDFF' : '#000000'}`,
                         }}
                       >
-                        {student.id +
-                          (student.surname === '' ? '' : ' - ') +
-                          student.surname +
-                          ' ' +
-                          student.firstname}
+                        {stringName(student)}
                       </Typography>
                     </Zoom>
                   ) : (
@@ -91,14 +89,16 @@ const Statistic = (props) => {
                           fontSize: {
                             md: '20px',
                           },
-                          color: `${key === 0 ? '#006699' : '#000000'}`,
+                          color: `${
+                            key === 0
+                              ? '#95BDFF'
+                              : isOrganizer(student)
+                              ? DARK_BLUE
+                              : 'black'
+                          }`,
                         }}
                       >
-                        {student.id +
-                          (student.surname === '' ? '' : ' - ') +
-                          student.surname +
-                          ' ' +
-                          student.firstname}
+                        {stringName(student)}
                       </Typography>
                     </Fade>
                   )}
@@ -126,6 +126,67 @@ const Statistic = (props) => {
             padding={1}
           >
             <Typography
+              align="center"
+              sx={{
+                fontSize: {
+                  md: '25px',
+                },
+                fontWeight: 'bold',
+              }}
+            >
+              THỜI GIAN HIỆN TẠI
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            item
+            // sx={{
+            //   bgcolor: '#ffffff',
+            // }}
+            padding={1}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Avatar
+              sx={{
+                width: {
+                  md: '350px',
+                },
+                height: {
+                  md: '150px',
+                },
+                bgcolor: props.bgCircle,
+                fontSize: '56px',
+                color: props.imageColor,
+                fontWeight: 'bold',
+              }}
+              variant="square"
+            >
+              {(curTime.getHours() >= 10
+                ? curTime.getHours()
+                : '0' + curTime.getHours()) +
+                ':' +
+                (curTime.getMinutes() >= 10
+                  ? curTime.getMinutes()
+                  : '0' + curTime.getMinutes()) +
+                ':' +
+                (curTime.getSeconds() >= 10
+                  ? curTime.getSeconds()
+                  : '0' + curTime.getSeconds())}
+            </Avatar>
+          </Grid>
+        </Grid>
+        <Grid container item direction="column">
+          <Grid
+            item
+            sx={{
+              bgcolor: '#ffffff',
+            }}
+            padding={1}
+            paddingBottom="20px"
+          >
+            <Typography
+              align="center"
               sx={{
                 fontSize: {
                   md: '25px',
@@ -222,64 +283,6 @@ const Statistic = (props) => {
                 Doanh nghiệp tham gia
               </Typography>
             </Grid>
-          </Grid>
-        </Grid>
-        <Grid container item direction="column">
-          <Grid
-            item
-            sx={{
-              bgcolor: '#ffffff',
-            }}
-            padding={1}
-          >
-            <Typography
-              sx={{
-                fontSize: {
-                  md: '25px',
-                },
-                fontWeight: 'bold',
-              }}
-            >
-              THỜI GIAN HIỆN TẠI
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            item
-            sx={{
-              bgcolor: '#ffffff',
-            }}
-            padding={1}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Avatar
-              sx={{
-                width: {
-                  md: '350px',
-                },
-                height: {
-                  md: '150px',
-                },
-                bgcolor: props.bgCircle,
-                fontSize: '56px',
-                color: props.imageColor,
-                fontWeight: 'bold',
-              }}
-              variant="square"
-            >
-              {(curTime.getHours() >= 10
-                ? curTime.getHours()
-                : '0' + curTime.getHours()) +
-                ':' +
-                (curTime.getMinutes() >= 10
-                  ? curTime.getMinutes()
-                  : '0' + curTime.getMinutes()) +
-                ':' +
-                (curTime.getSeconds() >= 10
-                  ? curTime.getSeconds()
-                  : '0' + curTime.getSeconds())}
-            </Avatar>
           </Grid>
         </Grid>
       </Grid>

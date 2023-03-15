@@ -11,22 +11,22 @@ const HomePage = () => {
     <Grid
       container
       direction="column"
-      justifyContent="center"
+      // justifyContent="center"
       alignItems="center"
       rowSpacing={1.5}
       sx={{
         width: '100%',
       }}
     >
-      <Grid item>
+      <Grid item alignContent={'center'}>
         <TitleBar
-          circleColor="#006699"
+          circleColor="#95BDFF"
           title="THỐNG KÊ SỰ KIỆN JOBFAIR 2021"
           type="homepage"
         />
       </Grid>
       <Grid item>
-        <Statistic business={50} bgCircle="#ECF2FF" imageColor="#006699" />
+        <Statistic business={50} bgCircle="#ECF2FF" imageColor="#95BDFF" />
       </Grid>
     </Grid>
   )

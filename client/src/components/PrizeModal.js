@@ -97,7 +97,7 @@ const PrizeModal = (props) => {
                 alignItems="center"
                 sx={{
                   height: '60px',
-                  bgcolor: '#006699',
+                  bgcolor: '#95BDFF',
                 }}
               >
                 <Typography

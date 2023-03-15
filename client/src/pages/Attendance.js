@@ -1,91 +1,99 @@
-import React from "react";
-import TitleBar from '../components/TitleBar';
-import SubTitleBar from '../components/SubTitleBar';
-import Search from '../components/Search';
-import InfoBox from '../components/InfoBox';
-import { Grid } from "@mui/material";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
+import TitleBar from '../components/TitleBar'
+import SubTitleBar from '../components/SubTitleBar'
+import Search from '../components/Search'
+import InfoBox from '../components/InfoBox'
+import { Grid } from '@mui/material'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { BLUE_BG, DARK_BLUE, PINK_BG } from '../utils'
 
 const Attendance = () => {
-  const [buttonIn, setButtonIn] = useState(true);
+  const [buttonIn, setButtonIn] = useState(true)
 
-  const { student, attendance } = useSelector(state => state);
+  const { student, attendance } = useSelector((state) => state)
 
-  const { inCheck, outCheck } = useSelector(state => state.alert);
+  const { inCheck, outCheck } = useSelector((state) => state.alert)
 
-  const password = localStorage.getItem('password');
+  const password = localStorage.getItem('password')
 
   return (
     <>
-      {
-        buttonIn
-          ? <Grid container
-            direction='column'
-            justifyContent='center'
-            alignItems='center'
-            rowSpacing={1.5}
-            sx={{
-              width: '100%',
-            }}
-          >
-            <Grid item>
-              <TitleBar circleColor="#1E4AE8"
-                title="ĐIỂM DANH SINH VIÊN"
-                type="attendance"
-                buttonIn={buttonIn}
-                setButtonIn={setButtonIn}
-              />
-            </Grid>
-            <Grid item>
-              <SubTitleBar content={`${buttonIn ? 'ĐIỂM DANH SINH VIÊN VÀO' : 'ĐIỂM DANH SINH VIÊN RA'}`} />
-            </Grid>
-            <Grid item>
-              <Search studentIn={buttonIn} />
-            </Grid>
-            <Grid item>
-              <InfoBox
-                student={student[0]}
-                students={student}
-                alert={inCheck}
-              />
-            </Grid>
+      {buttonIn ? (
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          rowSpacing={1.5}
+          sx={{
+            width: '100%',
+          }}
+        >
+          <Grid item>
+            <TitleBar
+              circleColor={DARK_BLUE}
+              title="ĐIỂM DANH SINH VIÊN"
+              type="attendance"
+              buttonIn={buttonIn}
+              setButtonIn={setButtonIn}
+            />
           </Grid>
-          : <Grid container
-            direction='column'
-            justifyContent='center'
-            alignItems='center'
-            rowSpacing={1.5}
-            sx={{
-              width: '100%',
-            }}
-          >
-            <Grid item>
-              <TitleBar circleColor="#1E4AE8"
-                title="ĐIỂM DANH SINH VIÊN"
-                type="attendance"
-                buttonIn={buttonIn}
-                setButtonIn={setButtonIn}
-              />
-            </Grid>
-            <Grid item>
-              <SubTitleBar content={`${buttonIn ? 'ĐIỂM DANH SINH VIÊN VÀO' : 'ĐIỂM DANH SINH VIÊN RA'}`} />
-            </Grid>
-            <Grid item>
-              <Search studentIn={buttonIn} />
-            </Grid>
-            <Grid item>
-              <InfoBox
-                student={attendance[0]}
-                students={attendance}
-                alert={outCheck}
-              />
-            </Grid>
+          <Grid item>
+            <SubTitleBar
+              content={`${
+                buttonIn ? 'ĐIỂM DANH SINH VIÊN VÀO' : 'ĐIỂM DANH SINH VIÊN RA'
+              }`}
+            />
           </Grid>
-      }
+          <Grid item>
+            <Search studentIn={buttonIn} />
+          </Grid>
+          <Grid item>
+            <InfoBox student={student[0]} students={student} alert={inCheck} />
+          </Grid>
+        </Grid>
+      ) : (
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          rowSpacing={1.5}
+          sx={{
+            width: '100%',
+          }}
+        >
+          <Grid item>
+            <TitleBar
+              circleColor="#F7C8E0"
+              title="ĐIỂM DANH SINH VIÊN"
+              type="attendance"
+              buttonIn={buttonIn}
+              setButtonIn={setButtonIn}
+            />
+          </Grid>
+          <Grid item>
+            <SubTitleBar
+              content={`${
+                buttonIn ? 'ĐIỂM DANH SINH VIÊN VÀO' : 'ĐIỂM DANH SINH VIÊN RA'
+              }`}
+            />
+          </Grid>
+          <Grid item>
+            <Search studentIn={buttonIn} />
+          </Grid>
+          <Grid item>
+            <InfoBox
+              student={attendance[0]}
+              students={attendance}
+              alert={outCheck}
+            />
+          </Grid>
+        </Grid>
+      )}
     </>
-
   )
 }
 
-export default Attendance;
+export default Attendance
